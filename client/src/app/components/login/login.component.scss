@@ -1,0 +1,39 @@
+.centered{
+  margin: 0px;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .container{
+    max-width: 400px;
+  }
+}
+
+.alert{
+  display: none;
+  width: 98%;
+  position: absolute;
+  bottom: 1%;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 1%; opacity: 1;}
+  }
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 1%; opacity: 1;}
+  }
+  @-webkit-keyframes fadeout {
+    from {bottom: 1%; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+
+  @keyframes fadeout {
+      from {bottom: 1%; opacity: 1;}
+      to {bottom: 0; opacity: 0;}
+  }
+}

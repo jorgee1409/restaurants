@@ -1,0 +1,134 @@
+<nav id="header" class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand">Administrate</a>
+</nav>
+
+<div class="container section">
+  <div class="row mg-20">
+    <div class="col-sm-4">
+      <div class="card border-info mb-3">
+        <div class="card-body text-center center">
+          <div class="inside">
+            <h4 class="card-title">Flujo de Caja</h4>
+            <p class="card-text">Total de ingresos y egresos</p>
+            <a href="#flujoCaja" class="btn btn-info">Ver más</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card border-info mb-3">
+        <div class="card-body text-center center">
+          <div class="inside">
+            <h4 class="card-title">Ver ordenes</h4>
+            <p class="card-text">Ver todas las ordenes históricas</p>
+            <a href="#totalOrders" class="btn btn-info">Ver más</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card border-info mb-3">
+        <div class="card-body text-center center">
+          <div class="inside">
+            <h4 class="card-title">Reportes</h4>
+            <p class="card-text">Visualiza reportes de la data histórica</p>
+            <a href="#reports" class="btn btn-info">Ver más</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="flujoCaja" class="section">
+  <div class="row center">
+    <div class="col-md-4">
+      <div style="display: block;">
+      <canvas baseChart width="400" height="400"
+                  [datasets]="lineChartData"
+                  [labels]="lineChartLabels"
+                  [options]="lineChartOptions"
+                  [colors]="lineChartColors"
+                  [legend]="lineChartLegend"
+                  [chartType]="lineChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+      </div>
+    </div>
+    <div class="col-md-4" style="margin-bottom: 10px">
+      <table class="table table-responsive table-condensed">
+        <tr>
+          <th *ngFor="let label of lineChartLabels">{{label}}</th>
+        </tr>
+        <tr *ngFor="let d of lineChartData">
+          <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="totalOrders" class="container section">
+  <div class="container">
+    <p class="lead">
+      <select class="custom-select">
+        <option selected>Todo</option>
+        <option value="0">Comanda</option>
+        <option value="1">En Proceso</option>
+        <option value="2">Terminada</option>
+      </select>
+    </p>
+
+    <div id="tables" class="container">
+      <table class="table table-overflow">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th width="20%">Time</th>
+            <th width="20%">Date</th>
+            <th width="20%">Dish</th>
+            <th width="20%">Client</th>
+            <th width="20%">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>5:00PM</td>
+            <td>14/09/2017</td>
+            <td>Lomo Saltado</td>
+            <td>Juan Perez</td>
+            <td>Comanda</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div id="reports" class="section">
+  <div class="container" style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+</div>
+
+<div id="reports" class="section">
+  <div class="container" style="display: block">
+  <canvas baseChart
+              [data]="doughnutChartData"
+              [labels]="doughnutChartLabels"
+              [chartType]="doughnutChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+</div>
+</div>
