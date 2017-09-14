@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CajeroService } from '../../services/cajero.service';
+import { OrderService } from '../../services/order.service';
 
 @Component({
   selector: 'app-cajero',
@@ -13,8 +13,8 @@ export class CajeroComponent{
   date: Date;
   categories: any[]=[];
   selectedValue:string;
-  dishes: any;
-  constructor(private cajeroService: CajeroService) {
+  dishes: any = [];
+  constructor(private orderService: OrderService) {
     let client1: Client,
         client2: Client;
     client1 = new Client("Jorge Espinoza", false);
@@ -57,11 +57,6 @@ export class CajeroComponent{
   selectClient(client){
     this.clientName = client.name;
   }
-  deleteOptions(){
-    for (let i = 0; i < this.clients.length; i++) {
-        this.clients[i].selected = false;
-    }
-  }
 
   addNewClient(){
     let input = document.getElementById("newClient");
@@ -101,15 +96,16 @@ export class CajeroComponent{
       paymentTipe: this.selectedValue,
       total: this.getSum(),
       detail: detail,
+      date: this.date
     }
-    this.cajeroService.addOrder(newOrder)
+    this.orderService.addOrder(newOrder)
       .subscribe( order =>{
         console.log(order);
       });
 
     this.clientName = "";
     this.date = new Date();
-
+    this.selectedValue = "";
     for (let i = 0; i < this.dishes.length; i++) {
         this.dishes[i].selected = false;
     }

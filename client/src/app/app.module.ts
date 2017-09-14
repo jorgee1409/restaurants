@@ -12,7 +12,7 @@ import { CajeroComponent } from './components/cajero/cajero.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ChefComponent } from './components/chef/chef.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { CajeroService } from './services/cajero.service';
+import { OrderService } from './services/order.service';
 
 const appRoutes: Routes = [
     {
@@ -49,7 +49,7 @@ const appRoutes: Routes = [
     ChartsModule,
     HttpModule
   ],
-  providers: [UserService,AuthGuard,CajeroService],
+  providers: [UserService,AuthGuard,OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

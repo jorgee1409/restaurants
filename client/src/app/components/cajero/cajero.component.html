@@ -5,7 +5,7 @@
       <div class="form-group">
         <label>Client</label>
         <div class="input-group">
-          <input [ngModel]="clientName" (ngModelChange)="deleteOptions()" name="clientName" type="text" class="form-control">
+          <input [(ngModel)]="clientName" name="clientName" type="text" class="form-control">
           <span class="input-group-btn">
             <button id="search" class="btn btn-secondary" type="button" (click)="openModal()">
               Search

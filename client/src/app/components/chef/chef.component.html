@@ -29,9 +29,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>5:00PM</td>
+          <tr *ngFor = "let order of orders; let i=index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{order.date}}</td>
             <td>14/09/2017</td>
             <td>Lomo Saltado</td>
             <td>Juan Perez</td>
