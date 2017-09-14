@@ -23,23 +23,25 @@
             <th>#</th>
             <th width="20%">Time</th>
             <th width="20%">Date</th>
-            <th width="20%">Dish</th>
+            <th width="20%">Dishes</th>
             <th width="20%">Client</th>
-            <th width="20%">Status</th>
+            <th width="20%">State</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor = "let order of orders; let i=index">
             <th scope="row">{{i+1}}</th>
-            <td>{{order.date}}</td>
-            <td>14/09/2017</td>
-            <td>Lomo Saltado</td>
-            <td>Juan Perez</td>
+            <td>{{order.date| date:'shortTime'}}</td>
+            <td>{{order.date| date}}</td>
             <td>
-              <select class="custom-select">
-                <option selected>Comanda</option>
-                <option value="1">En Proceso</option>
-                <option value="1">Terminada</option>
+              <span *ngFor="let dish of order.detail">{{dish.name}}<br></span>
+            </td>
+            <td>{{order.clientName}}</td>
+            <td>
+              <select class="custom-select" [ngModel]="order.state" (ngModelChange)="changeState(order, $event)">
+                <option>Comanda</option>
+                <option>En Proceso</option>
+                <option>Terminada</option>
               </select>
             </td>
           </tr>

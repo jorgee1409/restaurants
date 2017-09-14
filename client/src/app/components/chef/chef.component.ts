@@ -15,6 +15,13 @@ export class ChefComponent{
         this.orders = data;
       });
   }
+  changeState(order:Order, state:string){
+    order.state = state;
+    this.orderService.updateOrder(order)
+      .subscribe(data=>{
+        console.log(data);
+      });
+  }
 }
 
 export class Order{
@@ -27,6 +34,6 @@ export class Order{
 }
 
 export class Dish{
-  dishName:string;
+  name:string;
   price: number;
 }

@@ -19,12 +19,12 @@ export class OrderService {
       .map(res => res.json());
   }
 
-  deleteTask(id){
+  deleteOrder(id){
     return this.http.delete('http://localhost:3000/api/orders/' + id)
       .map(res => res.json());
   }
 
-  updateTask(order){
+  updateOrder(order){
     var headers = new Headers();
     headers.append('content-type', 'application/json');
     return this.http.put('http://localhost:3000/api/orders/' + order._id,JSON.stringify(order), {headers: headers})
