@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { UserService } from './services/user.service';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { HttpModule } from '@angular/http';
+import { Pipe, PipeTransform } from '@angular/core';
 
 import { LoginComponent } from './components/login/login.component';
 import { CajeroComponent } from './components/cajero/cajero.component';
@@ -13,6 +14,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { ChefComponent } from './components/chef/chef.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { OrderService } from './services/order.service';
+import { StatePipe } from './pipes/state.pipe';
 
 const appRoutes: Routes = [
     {
@@ -21,7 +23,7 @@ const appRoutes: Routes = [
     },
     {
       path: "cajero",
-      // canActivate: [AuthGuard],
+      //canActivate: [AuthGuard],
       component: CajeroComponent
     },
     {
@@ -40,7 +42,8 @@ const appRoutes: Routes = [
     CajeroComponent,
     LoginComponent,
     ChefComponent,
-    AdminComponent
+    AdminComponent,
+    StatePipe
   ],
   imports: [
     BrowserModule,

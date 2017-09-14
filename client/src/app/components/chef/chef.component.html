@@ -8,11 +8,11 @@
 
   <div class="container">
     <p class="lead">
-      <select class="custom-select">
+      <select class="custom-select" [(ngModel)]="selectedFilter">
         <option selected>Todo</option>
-        <option value="0">Comanda</option>
-        <option value="1">En Proceso</option>
-        <option value="2">Terminada</option>
+        <option value="Comanda">Comanda</option>
+        <option value="En Proceso">En Proceso</option>
+        <option value="Terminada">Terminada</option>
       </select>
     </p>
 
@@ -29,7 +29,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor = "let order of orders; let i=index">
+          <tr *ngFor = "let order of (orders | state: selectedFilter ); let i=index">
             <th scope="row">{{i+1}}</th>
             <td>{{order.date| date:'shortTime'}}</td>
             <td>{{order.date| date}}</td>

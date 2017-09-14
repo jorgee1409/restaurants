@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { OrderService } from '../../services/order.service';
 import { DatePipe } from '@angular/common';
+import { Order } from '../../classes/order';
+import { Dish } from '../../classes/dish';
 
 @Component({
   selector: 'app-chef',
@@ -8,7 +10,9 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./chef.component.scss']
 })
 export class ChefComponent{
-  public orders: Order[] = null;
+  orders: Order[] = null;
+  selectedFilter:string = "Todo";
+
   constructor(private orderService: OrderService) {
     this.orderService.getOrders()
       .subscribe(data =>{
@@ -22,18 +26,4 @@ export class ChefComponent{
         console.log(data);
       });
   }
-}
-
-export class Order{
-  state: string;
-  clientName: string;
-  paymentTipe: string;
-  total: number;
-  detail: Dish[];
-  date: Date;
-}
-
-export class Dish{
-  name:string;
-  price: number;
 }
